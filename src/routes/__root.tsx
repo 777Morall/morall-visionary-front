@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Assine um plano mensal e acesse um painel moderno, privado e organizado para gerenciar suas consultas. Pagamento via Pix.",
       },
       { name: "author", content: "Morall Buscas" },
-      { property: "og:title", content: "Morall Buscas — Plataforma premium de consultas" },
+      { property: "og:title", content: "Morall Buscas — Consultas em uma plataforma premium" },
       {
         property: "og:description",
         content: "Painel privado, assinatura mensal via Pix e uma experiência rápida e segura.",
@@ -92,6 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@MorallBuscas" },
+      { name: "twitter:title", content: "Morall Buscas — Consultas em uma plataforma premium" },
+      { name: "description", content: "Morall Buscas is a premium platform for monthly subscriptions offering private dashboard access for digital queries." },
+      { property: "og:description", content: "Morall Buscas is a premium platform for monthly subscriptions offering private dashboard access for digital queries." },
+      { name: "twitter:description", content: "Morall Buscas is a premium platform for monthly subscriptions offering private dashboard access for digital queries." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/effa0a66-aa7a-4c6f-b98c-609c66b46636/id-preview-5a8a023d--8d54a4d1-b11c-47e6-aa53-e2c1594c926e.lovable.app-1781331059728.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/effa0a66-aa7a-4c6f-b98c-609c66b46636/id-preview-5a8a023d--8d54a4d1-b11c-47e6-aa53-e2c1594c926e.lovable.app-1781331059728.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
