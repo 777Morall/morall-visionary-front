@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PlanosRouteImport } from './routes/planos'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as LegalRouteImport } from './routes/legal'
 import { Route as HistoricoRouteImport } from './routes/historico'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ConsultaRouteImport } from './routes/consulta'
@@ -27,6 +28,11 @@ const PlanosRoute = PlanosRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HistoricoRoute = HistoricoRouteImport.update({
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/historico': typeof HistoricoRoute
+  '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
   '/planos': typeof PlanosRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/historico': typeof HistoricoRoute
+  '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
   '/planos': typeof PlanosRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/historico': typeof HistoricoRoute
+  '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
   '/planos': typeof PlanosRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/consulta'
     | '/dashboard'
     | '/historico'
+    | '/legal'
     | '/login'
     | '/planos'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/consulta'
     | '/dashboard'
     | '/historico'
+    | '/legal'
     | '/login'
     | '/planos'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/consulta'
     | '/dashboard'
     | '/historico'
+    | '/legal'
     | '/login'
     | '/planos'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   ConsultaRoute: typeof ConsultaRoute
   DashboardRoute: typeof DashboardRoute
   HistoricoRoute: typeof HistoricoRoute
+  LegalRoute: typeof LegalRoute
   LoginRoute: typeof LoginRoute
   PlanosRoute: typeof PlanosRoute
 }
@@ -161,6 +174,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/historico': {
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConsultaRoute: ConsultaRoute,
   DashboardRoute: DashboardRoute,
   HistoricoRoute: HistoricoRoute,
+  LegalRoute: LegalRoute,
   LoginRoute: LoginRoute,
   PlanosRoute: PlanosRoute,
 }
