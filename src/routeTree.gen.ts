@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PlanosRouteImport } from './routes/planos'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as HistoricoRouteImport } from './routes/historico'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ConsultaRouteImport } from './routes/consulta'
 import { Route as CheckoutRouteImport } from './routes/checkout'
@@ -25,6 +26,11 @@ const PlanosRoute = PlanosRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoricoRoute = HistoricoRouteImport.update({
+  id: '/historico',
+  path: '/historico',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
+  '/historico': typeof HistoricoRoute
   '/login': typeof LoginRoute
   '/planos': typeof PlanosRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
+  '/historico': typeof HistoricoRoute
   '/login': typeof LoginRoute
   '/planos': typeof PlanosRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
+  '/historico': typeof HistoricoRoute
   '/login': typeof LoginRoute
   '/planos': typeof PlanosRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/consulta'
     | '/dashboard'
+    | '/historico'
     | '/login'
     | '/planos'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/consulta'
     | '/dashboard'
+    | '/historico'
     | '/login'
     | '/planos'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/consulta'
     | '/dashboard'
+    | '/historico'
     | '/login'
     | '/planos'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   ConsultaRoute: typeof ConsultaRoute
   DashboardRoute: typeof DashboardRoute
+  HistoricoRoute: typeof HistoricoRoute
   LoginRoute: typeof LoginRoute
   PlanosRoute: typeof PlanosRoute
 }
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/historico': {
+      id: '/historico'
+      path: '/historico'
+      fullPath: '/historico'
+      preLoaderRoute: typeof HistoricoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   ConsultaRoute: ConsultaRoute,
   DashboardRoute: DashboardRoute,
+  HistoricoRoute: HistoricoRoute,
   LoginRoute: LoginRoute,
   PlanosRoute: PlanosRoute,
 }
