@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PlanosRouteImport } from './routes/planos'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ConsultaRouteImport } from './routes/consulta'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CadastroRouteImport } from './routes/cadastro'
 import { Route as IndexRouteImport } from './routes/index'
@@ -29,6 +30,11 @@ const LoginRoute = LoginRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsultaRoute = ConsultaRouteImport.update({
+  id: '/consulta',
+  path: '/consulta',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cadastro': typeof CadastroRoute
   '/checkout': typeof CheckoutRoute
+  '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/planos': typeof PlanosRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cadastro': typeof CadastroRoute
   '/checkout': typeof CheckoutRoute
+  '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/planos': typeof PlanosRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cadastro': typeof CadastroRoute
   '/checkout': typeof CheckoutRoute
+  '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/planos': typeof PlanosRoute
@@ -78,16 +87,25 @@ export interface FileRouteTypes {
     | '/'
     | '/cadastro'
     | '/checkout'
+    | '/consulta'
     | '/dashboard'
     | '/login'
     | '/planos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cadastro' | '/checkout' | '/dashboard' | '/login' | '/planos'
+  to:
+    | '/'
+    | '/cadastro'
+    | '/checkout'
+    | '/consulta'
+    | '/dashboard'
+    | '/login'
+    | '/planos'
   id:
     | '__root__'
     | '/'
     | '/cadastro'
     | '/checkout'
+    | '/consulta'
     | '/dashboard'
     | '/login'
     | '/planos'
@@ -97,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CadastroRoute: typeof CadastroRoute
   CheckoutRoute: typeof CheckoutRoute
+  ConsultaRoute: typeof ConsultaRoute
   DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
   PlanosRoute: typeof PlanosRoute
@@ -123,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consulta': {
+      id: '/consulta'
+      path: '/consulta'
+      fullPath: '/consulta'
+      preLoaderRoute: typeof ConsultaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -153,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CadastroRoute: CadastroRoute,
   CheckoutRoute: CheckoutRoute,
+  ConsultaRoute: ConsultaRoute,
   DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
   PlanosRoute: PlanosRoute,
