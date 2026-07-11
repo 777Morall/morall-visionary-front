@@ -54,17 +54,22 @@ function Checkout() {
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.1fr]">
           {/* Summary */}
-          <GlassCard className="h-fit p-6">
+          <GlassCard className="h-fit min-w-0 p-6">
             <div
-              className="relative mb-5 aspect-[1.9/1] overflow-hidden rounded-xl p-4 text-white"
+              className="relative mb-5 flex aspect-[1.7/1] flex-col justify-between overflow-hidden rounded-xl p-4 text-white"
               style={{ backgroundImage: card.gradient }}
             >
               <div className="pointer-events-none absolute -right-6 -top-8 h-24 w-24 rounded-full bg-white/15 blur-2xl" />
-              <p className="text-xs font-medium uppercase tracking-widest opacity-80">{card.category}</p>
-              <p className="mt-1 text-lg font-bold">{card.name}</p>
-              <p className="absolute bottom-4 left-4 font-mono text-sm tracking-[0.2em] opacity-90">•••• •••• ••••</p>
-              <p className="absolute bottom-4 right-4 text-xl font-bold">R$ {value}</p>
+              <div className="relative flex items-start justify-between">
+                <p className="text-xs font-medium uppercase tracking-widest opacity-80">{card.category}</p>
+                <p className="text-xl font-bold">R$ {value}</p>
+              </div>
+              <div className="relative">
+                <p className="font-mono text-sm tracking-[0.2em] opacity-90">•••• •••• ••••</p>
+                <p className="mt-1 text-sm font-semibold">{card.name}</p>
+              </div>
             </div>
+
 
             <p className="mb-2 text-sm font-medium text-text-soft">Escolha o valor</p>
             <div className="flex flex-wrap gap-2">
