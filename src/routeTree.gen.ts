@@ -9,7 +9,9 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VendasRouteImport } from './routes/vendas'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as MeusCardsRouteImport } from './routes/meus-cards'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LegalRouteImport } from './routes/legal'
@@ -20,9 +22,19 @@ import { Route as CadastroRouteImport } from './routes/cadastro'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VendasRoute = VendasRouteImport.update({
+  id: '/vendas',
+  path: '/vendas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeusCardsRoute = MeusCardsRouteImport.update({
+  id: '/meus-cards',
+  path: '/meus-cards',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MarketplaceRoute = MarketplaceRouteImport.update({
@@ -81,7 +93,9 @@ export interface FileRoutesByFullPath {
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/meus-cards': typeof MeusCardsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vendas': typeof VendasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -93,7 +107,9 @@ export interface FileRoutesByTo {
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/meus-cards': typeof MeusCardsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vendas': typeof VendasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -106,7 +122,9 @@ export interface FileRoutesById {
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
   '/marketplace': typeof MarketplaceRoute
+  '/meus-cards': typeof MeusCardsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vendas': typeof VendasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -120,7 +138,9 @@ export interface FileRouteTypes {
     | '/legal'
     | '/login'
     | '/marketplace'
+    | '/meus-cards'
     | '/sitemap.xml'
+    | '/vendas'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -132,7 +152,9 @@ export interface FileRouteTypes {
     | '/legal'
     | '/login'
     | '/marketplace'
+    | '/meus-cards'
     | '/sitemap.xml'
+    | '/vendas'
   id:
     | '__root__'
     | '/'
@@ -144,7 +166,9 @@ export interface FileRouteTypes {
     | '/legal'
     | '/login'
     | '/marketplace'
+    | '/meus-cards'
     | '/sitemap.xml'
+    | '/vendas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -157,16 +181,32 @@ export interface RootRouteChildren {
   LegalRoute: typeof LegalRoute
   LoginRoute: typeof LoginRoute
   MarketplaceRoute: typeof MarketplaceRoute
+  MeusCardsRoute: typeof MeusCardsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  VendasRoute: typeof VendasRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vendas': {
+      id: '/vendas'
+      path: '/vendas'
+      fullPath: '/vendas'
+      preLoaderRoute: typeof VendasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meus-cards': {
+      id: '/meus-cards'
+      path: '/meus-cards'
+      fullPath: '/meus-cards'
+      preLoaderRoute: typeof MeusCardsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/marketplace': {
@@ -245,7 +285,9 @@ const rootRouteChildren: RootRouteChildren = {
   LegalRoute: LegalRoute,
   LoginRoute: LoginRoute,
   MarketplaceRoute: MarketplaceRoute,
+  MeusCardsRoute: MeusCardsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  VendasRoute: VendasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
