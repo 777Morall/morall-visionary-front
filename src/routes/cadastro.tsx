@@ -10,8 +10,8 @@ import { Field } from "./login";
 export const Route = createFileRoute("/cadastro")({
   head: () => ({
     meta: [
-      { title: "Criar conta — Morall Buscas" },
-      { name: "description", content: "Crie sua conta e acesse o painel premium da Morall Buscas." },
+      { title: "Criar conta — Morall Store" },
+      { name: "description", content: "Crie sua conta na Morall Store e comece a comprar e vender gift cards." },
     ],
   }),
   component: CadastroPage,
