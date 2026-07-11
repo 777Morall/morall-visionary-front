@@ -25,7 +25,7 @@ function LoginPage() {
     setStatus("loading");
     setTimeout(() => {
       setStatus("ok");
-      setTimeout(() => navigate({ to: "/dashboard" }), 900);
+      setTimeout(() => navigate({ to: "/marketplace" }), 900);
     }, 1300);
   };
 
