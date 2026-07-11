@@ -9,26 +9,37 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VendasRouteImport } from './routes/vendas'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as PlanosRouteImport } from './routes/planos'
+import { Route as MeusCardsRouteImport } from './routes/meus-cards'
+import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as HistoricoRouteImport } from './routes/historico'
 import { Route as DashboardRouteImport } from './routes/dashboard'
-import { Route as ConsultaRouteImport } from './routes/consulta'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CadastroRouteImport } from './routes/cadastro'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VendasRoute = VendasRouteImport.update({
+  id: '/vendas',
+  path: '/vendas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PlanosRoute = PlanosRouteImport.update({
-  id: '/planos',
-  path: '/planos',
+const MeusCardsRoute = MeusCardsRouteImport.update({
+  id: '/meus-cards',
+  path: '/meus-cards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceRoute = MarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -49,11 +60,6 @@ const HistoricoRoute = HistoricoRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConsultaRoute = ConsultaRouteImport.update({
-  id: '/consulta',
-  path: '/consulta',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -82,26 +88,28 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/cadastro': typeof CadastroRoute
   '/checkout': typeof CheckoutRoute
-  '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/historico': typeof HistoricoRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
-  '/planos': typeof PlanosRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/meus-cards': typeof MeusCardsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vendas': typeof VendasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/cadastro': typeof CadastroRoute
   '/checkout': typeof CheckoutRoute
-  '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/historico': typeof HistoricoRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
-  '/planos': typeof PlanosRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/meus-cards': typeof MeusCardsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vendas': typeof VendasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -109,13 +117,14 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/cadastro': typeof CadastroRoute
   '/checkout': typeof CheckoutRoute
-  '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/historico': typeof HistoricoRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
-  '/planos': typeof PlanosRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/meus-cards': typeof MeusCardsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vendas': typeof VendasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -124,39 +133,42 @@ export interface FileRouteTypes {
     | '/admin'
     | '/cadastro'
     | '/checkout'
-    | '/consulta'
     | '/dashboard'
     | '/historico'
     | '/legal'
     | '/login'
-    | '/planos'
+    | '/marketplace'
+    | '/meus-cards'
     | '/sitemap.xml'
+    | '/vendas'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/admin'
     | '/cadastro'
     | '/checkout'
-    | '/consulta'
     | '/dashboard'
     | '/historico'
     | '/legal'
     | '/login'
-    | '/planos'
+    | '/marketplace'
+    | '/meus-cards'
     | '/sitemap.xml'
+    | '/vendas'
   id:
     | '__root__'
     | '/'
     | '/admin'
     | '/cadastro'
     | '/checkout'
-    | '/consulta'
     | '/dashboard'
     | '/historico'
     | '/legal'
     | '/login'
-    | '/planos'
+    | '/marketplace'
+    | '/meus-cards'
     | '/sitemap.xml'
+    | '/vendas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -164,17 +176,25 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   CadastroRoute: typeof CadastroRoute
   CheckoutRoute: typeof CheckoutRoute
-  ConsultaRoute: typeof ConsultaRoute
   DashboardRoute: typeof DashboardRoute
   HistoricoRoute: typeof HistoricoRoute
   LegalRoute: typeof LegalRoute
   LoginRoute: typeof LoginRoute
-  PlanosRoute: typeof PlanosRoute
+  MarketplaceRoute: typeof MarketplaceRoute
+  MeusCardsRoute: typeof MeusCardsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  VendasRoute: typeof VendasRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vendas': {
+      id: '/vendas'
+      path: '/vendas'
+      fullPath: '/vendas'
+      preLoaderRoute: typeof VendasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -182,11 +202,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/planos': {
-      id: '/planos'
-      path: '/planos'
-      fullPath: '/planos'
-      preLoaderRoute: typeof PlanosRouteImport
+    '/meus-cards': {
+      id: '/meus-cards'
+      path: '/meus-cards'
+      fullPath: '/meus-cards'
+      preLoaderRoute: typeof MeusCardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace': {
+      id: '/marketplace'
+      path: '/marketplace'
+      fullPath: '/marketplace'
+      preLoaderRoute: typeof MarketplaceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -215,13 +242,6 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/consulta': {
-      id: '/consulta'
-      path: '/consulta'
-      fullPath: '/consulta'
-      preLoaderRoute: typeof ConsultaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -260,13 +280,14 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   CadastroRoute: CadastroRoute,
   CheckoutRoute: CheckoutRoute,
-  ConsultaRoute: ConsultaRoute,
   DashboardRoute: DashboardRoute,
   HistoricoRoute: HistoricoRoute,
   LegalRoute: LegalRoute,
   LoginRoute: LoginRoute,
-  PlanosRoute: PlanosRoute,
+  MarketplaceRoute: MarketplaceRoute,
+  MeusCardsRoute: MeusCardsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  VendasRoute: VendasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

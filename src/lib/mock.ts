@@ -1,158 +1,228 @@
-export type PlanId = "start" | "pro" | "elite";
+export type CategoryName =
+  | "Pré-pago"
+  | "Games"
+  | "Streaming"
+  | "Compras"
+  | "Música"
+  | "Viagem";
 
-export interface Plan {
-  id: PlanId;
+export interface GiftCard {
+  id: string;
   name: string;
-  price: number;
-  tagline: string;
-  features: string[];
-  cta: string;
-  highlight?: boolean;
+  category: CategoryName;
+  icon: string;
+  values: number[];
+  gradient: string;
+  rating: number;
+  sold: number;
   badge?: string;
-  queries: string;
+  desc: string;
 }
 
-export const plans: Plan[] = [
+export const categories: { name: CategoryName; icon: string; count: number }[] = [
+  { name: "Pré-pago", icon: "CreditCard", count: 24 },
+  { name: "Games", icon: "Gamepad2", count: 38 },
+  { name: "Streaming", icon: "PlayCircle", count: 17 },
+  { name: "Compras", icon: "ShoppingBag", count: 29 },
+  { name: "Música", icon: "Music", count: 12 },
+  { name: "Viagem", icon: "Plane", count: 9 },
+];
+
+export const giftCards: GiftCard[] = [
   {
-    id: "start",
-    name: "Start",
-    price: 30,
-    tagline: "Para quem está começando",
-    queries: "100 consultas/mês",
-    features: [
-      "Painel privado",
-      "Consultas mensais limitadas",
-      "Histórico básico",
-      "Suporte padrão",
-    ],
-    cta: "Assinar Start",
+    id: "prepaid-global",
+    name: "Cartão Pré-pago Global",
+    category: "Pré-pago",
+    icon: "CreditCard",
+    values: [50, 100, 150, 250],
+    gradient: "linear-gradient(135deg, #007ded 0%, #35c5ff 100%)",
+    rating: 4.9,
+    sold: 1820,
+    badge: "Mais vendido",
+    desc: "Cartão pré-pago recarregável aceito em milhares de lojas online.",
   },
   {
-    id: "pro",
-    name: "Pro",
-    price: 50,
-    tagline: "O equilíbrio ideal",
-    queries: "350 consultas/mês",
-    features: [
-      "Mais consultas mensais",
-      "Histórico completo",
-      "Prioridade visual",
-      "Suporte prioritário",
-    ],
-    cta: "Assinar Pro",
-    highlight: true,
-    badge: "Mais escolhido",
+    id: "gamer-pro",
+    name: "Vale Gamer Pro",
+    category: "Games",
+    icon: "Gamepad2",
+    values: [30, 60, 100, 200],
+    gradient: "linear-gradient(135deg, #6d28d9 0%, #007ded 100%)",
+    rating: 4.8,
+    sold: 3120,
+    badge: "Popular",
+    desc: "Crédito instantâneo para suas plataformas de jogos favoritas.",
   },
   {
-    id: "elite",
-    name: "Elite",
-    price: 100,
-    tagline: "Para alto volume",
-    queries: "Consultas ilimitadas*",
-    features: [
-      "Maior limite mensal",
-      "Recursos avançados",
-      "Prioridade máxima",
-      "Suporte premium",
-    ],
-    cta: "Assinar Elite",
+    id: "stream-plus",
+    name: "Vale Streaming Plus",
+    category: "Streaming",
+    icon: "PlayCircle",
+    values: [25, 50, 90],
+    gradient: "linear-gradient(135deg, #db2777 0%, #f43f5e 100%)",
+    rating: 4.7,
+    sold: 2440,
+    desc: "Assista sem limites com créditos para serviços de streaming.",
+  },
+  {
+    id: "shopping-max",
+    name: "Cartão de Compras Max",
+    category: "Compras",
+    icon: "ShoppingBag",
+    values: [50, 100, 200, 500],
+    gradient: "linear-gradient(135deg, #0891b2 0%, #35c5ff 100%)",
+    rating: 4.9,
+    sold: 1980,
+    badge: "Novo",
+    desc: "Compre de tudo nos maiores marketplaces com saldo garantido.",
+  },
+  {
+    id: "music-vibe",
+    name: "Vale Música Vibe",
+    category: "Música",
+    icon: "Music",
+    values: [20, 40, 75],
+    gradient: "linear-gradient(135deg, #16a34a 0%, #35c5ff 100%)",
+    rating: 4.6,
+    sold: 1210,
+    desc: "Milhões de músicas na palma da mão com créditos digitais.",
+  },
+  {
+    id: "travel-go",
+    name: "Cartão Viagem Go",
+    category: "Viagem",
+    icon: "Plane",
+    values: [100, 250, 500, 1000],
+    gradient: "linear-gradient(135deg, #f59e0b 0%, #f43f5e 100%)",
+    rating: 4.8,
+    sold: 870,
+    desc: "Use em passagens, hospedagens e experiências pelo mundo.",
+  },
+  {
+    id: "gamer-elite",
+    name: "Vale Games Elite",
+    category: "Games",
+    icon: "Trophy",
+    values: [60, 120, 250],
+    gradient: "linear-gradient(135deg, #4f46e5 0%, #35c5ff 100%)",
+    rating: 4.9,
+    sold: 1540,
+    desc: "Edição especial com bônus para colecionadores e competitivos.",
+  },
+  {
+    id: "prepaid-premium",
+    name: "Cartão Pré-pago Premium",
+    category: "Pré-pago",
+    icon: "Gem",
+    values: [150, 300, 600],
+    gradient: "linear-gradient(135deg, #0f172a 0%, #007ded 100%)",
+    rating: 5.0,
+    sold: 640,
+    badge: "Premium",
+    desc: "Limites elevados e vantagens exclusivas para grandes compras.",
   },
 ];
 
-export const comparison = [
-  { label: "Consultas mensais", start: "100", pro: "350", elite: "Ilimitadas*" },
-  { label: "Histórico", start: "Básico", pro: "Completo", elite: "Completo + export" },
-  { label: "Prioridade de fila", start: "—", pro: "Alta", elite: "Máxima" },
-  { label: "Suporte", start: "Padrão", pro: "Prioritário", elite: "Premium 24/7" },
-  { label: "Relatórios", start: "—", pro: "Mensal", elite: "Avançado" },
-  { label: "Acesso à API mock", start: "—", pro: "—", elite: "Incluído" },
-];
+export interface Order {
+  id: string;
+  card: string;
+  category: CategoryName;
+  value: string;
+  date: string;
+  status: "Entregue" | "Processando" | "Falhou";
+  code: string;
+}
 
-export const features = [
-  { icon: "LayoutDashboard", title: "Painel privado", desc: "Um ambiente exclusivo só seu, organizado e protegido." },
-  { icon: "History", title: "Histórico organizado", desc: "Acompanhe todas as suas consultas em um só lugar." },
-  { icon: "QrCode", title: "Pagamento Pix", desc: "Assinatura mensal simples e automática via Pix." },
-  { icon: "CreditCard", title: "Controle de assinatura", desc: "Gerencie seu plano e renovações em poucos cliques." },
-  { icon: "Gauge", title: "Limites por plano", desc: "Saiba exatamente quantas consultas você ainda tem." },
-  { icon: "Zap", title: "Interface rápida", desc: "Respostas em segundos com uma UI fluida." },
-  { icon: "Activity", title: "Status em tempo real", desc: "Veja o andamento de cada consulta instantaneamente." },
-  { icon: "ShieldCheck", title: "Design seguro", desc: "Privacidade e uso responsável no centro de tudo." },
-];
-
-export const steps = [
-  { n: "01", title: "Crie sua conta", desc: "Cadastro rápido em segundos." },
-  { n: "02", title: "Escolha seu plano", desc: "Start, Pro ou Elite." },
-  { n: "03", title: "Pague via Pix", desc: "Confirmação automática." },
-  { n: "04", title: "Acesse o dashboard", desc: "Seu painel premium liberado." },
-  { n: "05", title: "Faça suas consultas", desc: "Rápido, privado e organizado." },
-];
-
-export const securityItems = [
-  { icon: "ShieldCheck", title: "Uso responsável", desc: "Diretrizes claras para um uso autorizado e ético." },
-  { icon: "Lock", title: "Privacidade", desc: "Seus dados de acesso ficam protegidos." },
-  { icon: "ScrollText", title: "Logs de atividade", desc: "Transparência total sobre cada ação." },
-  { icon: "KeyRound", title: "Controle de acesso", desc: "Apenas você entra no seu painel." },
-  { icon: "ShieldAlert", title: "Limites antiabuso", desc: "Proteções automáticas contra mau uso." },
-  { icon: "EyeOff", title: "Ambiente privado", desc: "Espaço isolado e dedicado a você." },
-];
-
-export const faqs = [
-  { q: "Como funciona a assinatura?", a: "Você escolhe um plano mensal, paga via Pix e recebe acesso imediato ao painel premium. A renovação acontece a cada 30 dias." },
-  { q: "O acesso é liberado após o pagamento?", a: "Sim. Assim que o Pix é confirmado, seu acesso ao dashboard é liberado automaticamente." },
-  { q: "Posso trocar de plano?", a: "Claro. Você pode fazer upgrade ou downgrade a qualquer momento dentro da área de assinatura." },
-  { q: "O pagamento é via Pix?", a: "Sim, todo o fluxo de pagamento é feito por Pix, de forma rápida e segura." },
-  { q: "Existe limite de consultas?", a: "Cada plano possui um limite mensal de consultas, exibido em tempo real no seu painel." },
-  { q: "Posso cancelar?", a: "Sim. O cancelamento é simples e pode ser feito diretamente pelo painel, sem burocracia." },
-  { q: "A plataforma é segura?", a: "Trabalhamos com ambiente privado, controle de acesso e diretrizes de uso responsável e autorizado." },
-];
-
-export const recentQueries = [
-  { id: "Q-10482", type: "Consulta padrão", input: "•••• ••8421", date: "13/06/2026", status: "Concluída", plan: "Pro" },
-  { id: "Q-10481", type: "Consulta avançada", input: "•••• ••1190", date: "12/06/2026", status: "Concluída", plan: "Pro" },
-  { id: "Q-10479", type: "Consulta padrão", input: "•••• ••3375", date: "12/06/2026", status: "Concluída", plan: "Pro" },
-  { id: "Q-10477", type: "Consulta padrão", input: "•••• ••0028", date: "11/06/2026", status: "Falhou", plan: "Pro" },
-  { id: "Q-10470", type: "Consulta avançada", input: "•••• ••7762", date: "10/06/2026", status: "Concluída", plan: "Pro" },
-  { id: "Q-10465", type: "Consulta padrão", input: "•••• ••5510", date: "09/06/2026", status: "Pendente", plan: "Pro" },
+export const orders: Order[] = [
+  { id: "ORD-10482", card: "Cartão Pré-pago Global", category: "Pré-pago", value: "R$ 100", date: "10/07/2026", status: "Entregue", code: "GLBL-9F2K-7QX1-4M8P" },
+  { id: "ORD-10480", card: "Vale Gamer Pro", category: "Games", value: "R$ 60", date: "09/07/2026", status: "Entregue", code: "GMR-2K7A-11ZP-88QD" },
+  { id: "ORD-10477", card: "Vale Streaming Plus", category: "Streaming", value: "R$ 50", date: "08/07/2026", status: "Entregue", code: "STRM-5T9Q-3XW2-6KL0" },
+  { id: "ORD-10475", card: "Cartão de Compras Max", category: "Compras", value: "R$ 200", date: "07/07/2026", status: "Processando", code: "SHOP-••••-••••-••••" },
+  { id: "ORD-10470", card: "Vale Música Vibe", category: "Música", value: "R$ 40", date: "05/07/2026", status: "Entregue", code: "MSC-8H2D-9PQ4-1RT7" },
+  { id: "ORD-10466", card: "Cartão Viagem Go", category: "Viagem", value: "R$ 250", date: "03/07/2026", status: "Falhou", code: "TRVL-••••-••••-••••" },
 ];
 
 export const usageData = [
-  { month: "Jan", value: 42 },
-  { month: "Fev", value: 80 },
-  { month: "Mar", value: 65 },
-  { month: "Abr", value: 110 },
-  { month: "Mai", value: 95 },
-  { month: "Jun", value: 138 },
+  { month: "Jan", value: 4 },
+  { month: "Fev", value: 7 },
+  { month: "Mar", value: 5 },
+  { month: "Abr", value: 11 },
+  { month: "Mai", value: 9 },
+  { month: "Jun", value: 14 },
+];
+
+export const salesData = [
+  { month: "Jan", value: 1200 },
+  { month: "Fev", value: 2100 },
+  { month: "Mar", value: 1750 },
+  { month: "Abr", value: 3200 },
+  { month: "Mai", value: 2850 },
+  { month: "Jun", value: 4120 },
+];
+
+export interface SellerListing {
+  id: string;
+  card: string;
+  category: CategoryName;
+  stock: number;
+  price: string;
+  sold: number;
+  status: "Ativo" | "Pausado" | "Esgotado";
+}
+
+export const sellerListings: SellerListing[] = [
+  { id: "LST-201", card: "Cartão Pré-pago Global", category: "Pré-pago", stock: 42, price: "R$ 100", sold: 318, status: "Ativo" },
+  { id: "LST-202", card: "Vale Gamer Pro", category: "Games", stock: 15, price: "R$ 60", sold: 512, status: "Ativo" },
+  { id: "LST-203", card: "Vale Streaming Plus", category: "Streaming", stock: 0, price: "R$ 50", sold: 210, status: "Esgotado" },
+  { id: "LST-204", card: "Cartão de Compras Max", category: "Compras", stock: 28, price: "R$ 200", sold: 96, status: "Ativo" },
+  { id: "LST-205", card: "Vale Música Vibe", category: "Música", stock: 60, price: "R$ 40", sold: 74, status: "Pausado" },
+];
+
+export const recentSales = [
+  { buyer: "Marina S.", card: "Vale Gamer Pro", amount: "R$ 60", time: "há 4 min" },
+  { buyer: "Carlos L.", card: "Cartão Pré-pago Global", amount: "R$ 150", time: "há 22 min" },
+  { buyer: "Ana F.", card: "Vale Streaming Plus", amount: "R$ 50", time: "há 1 h" },
+  { buyer: "João P.", card: "Cartão de Compras Max", amount: "R$ 200", time: "há 2 h" },
+  { buyer: "Lucia M.", card: "Cartão Viagem Go", amount: "R$ 500", time: "há 3 h" },
+];
+
+export const faqs = [
+  { q: "Como recebo meu gift card?", a: "Após a confirmação do Pix, o código do card é entregue instantaneamente na área Meus Cards e por e-mail." },
+  { q: "Os cards têm validade?", a: "Cada modelo possui sua própria validade, sempre exibida na página do produto antes da compra." },
+  { q: "Posso vender meus próprios cards?", a: "Sim. Na área de Vendas você cria anúncios, define preços e acompanha seus resultados em tempo real." },
+  { q: "O pagamento é seguro?", a: "Todo o fluxo é feito via Pix com confirmação automática e ambiente protegido." },
+  { q: "Posso pedir reembolso?", a: "Cards não utilizados podem ser reembolsados conforme a política de cada modelo." },
 ];
 
 export const adminMetrics = [
-  { label: "MRR", value: "R$ 48.350", delta: "+12,4%", icon: "TrendingUp" },
-  { label: "Usuários ativos", value: "1.284", delta: "+3,1%", icon: "Users" },
-  { label: "Assinaturas ativas", value: "967", delta: "+5,7%", icon: "BadgeCheck" },
-  { label: "Pagamentos pendentes", value: "23", delta: "-2", icon: "Clock" },
-  { label: "Consultas no mês", value: "84.210", delta: "+18,9%", icon: "Search" },
-  { label: "Churn", value: "1,9%", delta: "-0,3%", icon: "Activity" },
+  { label: "Receita (mês)", value: "R$ 142.980", delta: "+18,4%", icon: "TrendingUp" },
+  { label: "Cards vendidos", value: "9.842", delta: "+7,1%", icon: "CreditCard" },
+  { label: "Vendedores ativos", value: "312", delta: "+4,7%", icon: "Store" },
+  { label: "Pedidos pendentes", value: "18", delta: "-3", icon: "Clock" },
+  { label: "Novos usuários", value: "1.284", delta: "+11,9%", icon: "Users" },
+  { label: "Taxa de conversão", value: "6,4%", delta: "+0,5%", icon: "Activity" },
 ];
 
 export const adminUsers = [
-  { name: "Marina Souza", email: "marina@email.com", plan: "Pro", status: "Ativo", since: "02/2026" },
-  { name: "Carlos Lima", email: "carlos@email.com", plan: "Elite", status: "Ativo", since: "11/2025" },
-  { name: "Ana Ferreira", email: "ana@email.com", plan: "Start", status: "Pendente", since: "06/2026" },
-  { name: "João Pedro", email: "joao@email.com", plan: "Pro", status: "Cancelado", since: "01/2026" },
-  { name: "Lucia Martins", email: "lucia@email.com", plan: "Elite", status: "Ativo", since: "03/2026" },
+  { name: "Marina Souza", email: "marina@email.com", plan: "Comprador", status: "Ativo", since: "02/2026" },
+  { name: "Carlos Lima", email: "carlos@email.com", plan: "Vendedor", status: "Ativo", since: "11/2025" },
+  { name: "Ana Ferreira", email: "ana@email.com", plan: "Comprador", status: "Pendente", since: "06/2026" },
+  { name: "João Pedro", email: "joao@email.com", plan: "Vendedor", status: "Cancelado", since: "01/2026" },
+  { name: "Lucia Martins", email: "lucia@email.com", plan: "Vendedor", status: "Ativo", since: "03/2026" },
 ];
 
 export const adminPayments = [
-  { id: "PIX-99213", user: "Marina Souza", amount: "R$ 50,00", status: "Aprovado", date: "13/06/2026" },
-  { id: "PIX-99210", user: "Carlos Lima", amount: "R$ 100,00", status: "Aprovado", date: "13/06/2026" },
-  { id: "PIX-99208", user: "Ana Ferreira", amount: "R$ 30,00", status: "Pendente", date: "12/06/2026" },
-  { id: "PIX-99201", user: "Lucia Martins", amount: "R$ 100,00", status: "Aprovado", date: "11/06/2026" },
-  { id: "PIX-99198", user: "João Pedro", amount: "R$ 50,00", status: "Falhou", date: "10/06/2026" },
+  { id: "PIX-99213", user: "Marina Souza", amount: "R$ 100,00", status: "Aprovado", date: "10/07/2026" },
+  { id: "PIX-99210", user: "Carlos Lima", amount: "R$ 150,00", status: "Aprovado", date: "10/07/2026" },
+  { id: "PIX-99208", user: "Ana Ferreira", amount: "R$ 50,00", status: "Pendente", date: "09/07/2026" },
+  { id: "PIX-99201", user: "Lucia Martins", amount: "R$ 500,00", status: "Aprovado", date: "08/07/2026" },
+  { id: "PIX-99198", user: "João Pedro", amount: "R$ 200,00", status: "Falhou", date: "07/07/2026" },
 ];
 
 export const adminLogs = [
-  { time: "14:02", text: "Novo usuário cadastrado — marina@email.com" },
-  { time: "13:58", text: "Pagamento aprovado — PIX-99213" },
-  { time: "13:40", text: "Upgrade de plano — Start → Pro" },
-  { time: "13:21", text: "Tentativa de acesso bloqueada (limite antiabuso)" },
-  { time: "12:55", text: "Assinatura renovada — Carlos Lima" },
+  { time: "14:02", text: "Novo pedido pago — ORD-10482" },
+  { time: "13:58", text: "Card entregue — Vale Gamer Pro" },
+  { time: "13:40", text: "Novo anúncio criado — LST-206" },
+  { time: "13:21", text: "Tentativa de compra bloqueada (antifraude)" },
+  { time: "12:55", text: "Novo vendedor aprovado — Carlos Lima" },
 ];

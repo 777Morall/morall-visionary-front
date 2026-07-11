@@ -2,9 +2,10 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import {
   LayoutDashboard,
-  Search,
-  History,
-  CreditCard,
+  Store,
+  Wallet,
+  Receipt,
+  TrendingUp,
   Settings,
   LogOut,
   Menu,
@@ -17,10 +18,11 @@ import { GlowButton } from "./GlowButton";
 import { BackgroundGlow } from "./BackgroundGlow";
 
 const nav = [
+  { label: "Marketplace", to: "/marketplace" as const, icon: Store },
   { label: "Dashboard", to: "/dashboard" as const, icon: LayoutDashboard },
-  { label: "Nova consulta", to: "/consulta" as const, icon: Search },
-  { label: "Histórico", to: "/historico" as const, icon: History },
-  { label: "Assinatura", to: "/checkout" as const, icon: CreditCard },
+  { label: "Meus cards", to: "/meus-cards" as const, icon: Wallet },
+  { label: "Vendas", to: "/vendas" as const, icon: TrendingUp },
+  { label: "Pedidos", to: "/historico" as const, icon: Receipt },
   { label: "Admin", to: "/admin" as const, icon: Settings },
 ];
 
@@ -128,7 +130,7 @@ export function DashboardLayout({
                 <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-glow shadow-[0_0_8px_rgba(53,197,255,0.9)]" />
               </button>
               <GlowButton asChild variant="primary" size="sm" className="hidden sm:inline-flex">
-                <Link to="/consulta">Nova consulta</Link>
+                <Link to="/marketplace">Comprar cards</Link>
               </GlowButton>
               <div className="flex items-center gap-2 rounded-full border border-border bg-surface/50 py-1 pl-1 pr-3">
                 <span className="grid h-8 w-8 place-items-center rounded-full brand-gradient text-sm font-bold text-primary-foreground">

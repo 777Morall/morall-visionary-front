@@ -9,8 +9,8 @@ import { GlowButton } from "@/components/GlowButton";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Entrar — Morall Buscas" },
-      { name: "description", content: "Acesse seu painel privado da Morall Buscas." },
+      { title: "Entrar — Morall Store" },
+      { name: "description", content: "Acesse sua conta na Morall Store, o marketplace de gift cards." },
     ],
   }),
   component: LoginPage,
@@ -25,7 +25,7 @@ function LoginPage() {
     setStatus("loading");
     setTimeout(() => {
       setStatus("ok");
-      setTimeout(() => navigate({ to: "/dashboard" }), 900);
+      setTimeout(() => navigate({ to: "/marketplace" }), 900);
     }, 1300);
   };
 
@@ -38,13 +38,13 @@ function LoginPage() {
         <Logo />
         <div>
           <h2 className="max-w-sm text-4xl font-bold leading-tight text-text-strong">
-            Bem-vindo de volta ao seu <span className="text-gradient">painel premium</span>.
+            Gift cards e cartões pré-pagos no seu <span className="text-gradient">marketplace premium</span>.
           </h2>
           <p className="mt-4 max-w-sm text-text-dim">
-            Uma experiência rápida, privada e organizada para gerenciar suas consultas.
+            Compre, venda e presenteie cards digitais com entrega instantânea via Pix.
           </p>
           <div className="mt-8 flex flex-wrap gap-2.5">
-            {["Acesso privado", "Pix automático", "Histórico protegido"].map((b) => (
+            {["Entrega na hora", "Pix seguro", "Área de vendas"].map((b) => (
               <span
                 key={b}
                 className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface/40 px-3 py-1.5 text-xs text-text-soft"
@@ -54,7 +54,7 @@ function LoginPage() {
             ))}
           </div>
         </div>
-        <p className="text-xs text-text-dim">© {new Date().getFullYear()} Morall Buscas</p>
+        <p className="text-xs text-text-dim">© {new Date().getFullYear()} Morall Store</p>
       </div>
 
       {/* Form side */}
