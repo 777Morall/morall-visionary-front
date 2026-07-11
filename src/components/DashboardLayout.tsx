@@ -2,9 +2,10 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import {
   LayoutDashboard,
-  Search,
-  History,
-  CreditCard,
+  Store,
+  Wallet,
+  Receipt,
+  TrendingUp,
   Settings,
   LogOut,
   Menu,
@@ -17,10 +18,11 @@ import { GlowButton } from "./GlowButton";
 import { BackgroundGlow } from "./BackgroundGlow";
 
 const nav = [
+  { label: "Marketplace", to: "/marketplace" as const, icon: Store },
   { label: "Dashboard", to: "/dashboard" as const, icon: LayoutDashboard },
-  { label: "Nova consulta", to: "/consulta" as const, icon: Search },
-  { label: "Histórico", to: "/historico" as const, icon: History },
-  { label: "Assinatura", to: "/checkout" as const, icon: CreditCard },
+  { label: "Meus cards", to: "/meus-cards" as const, icon: Wallet },
+  { label: "Vendas", to: "/vendas" as const, icon: TrendingUp },
+  { label: "Pedidos", to: "/historico" as const, icon: Receipt },
   { label: "Admin", to: "/admin" as const, icon: Settings },
 ];
 
