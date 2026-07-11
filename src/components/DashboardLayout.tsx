@@ -130,7 +130,7 @@ export function DashboardLayout({
                 <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-glow shadow-[0_0_8px_rgba(53,197,255,0.9)]" />
               </button>
               <GlowButton asChild variant="primary" size="sm" className="hidden sm:inline-flex">
-                <Link to="/consulta">Nova consulta</Link>
+                <Link to="/marketplace">Comprar cards</Link>
               </GlowButton>
               <div className="flex items-center gap-2 rounded-full border border-border bg-surface/50 py-1 pl-1 pr-3">
                 <span className="grid h-8 w-8 place-items-center rounded-full brand-gradient text-sm font-bold text-primary-foreground">
