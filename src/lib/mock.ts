@@ -196,7 +196,7 @@ export const faqs = [
 
 export const adminMetrics = [
   { label: "Receita (mês)", value: "R$ 142.980", delta: "+18,4%", icon: "TrendingUp" },
-  { label: "Cards vendidos", value: "9.altered", delta: "+7,1%", icon: "CreditCard" },
+  { label: "Cards vendidos", value: "9.842", delta: "+7,1%", icon: "CreditCard" },
   { label: "Vendedores ativos", value: "312", delta: "+4,7%", icon: "Store" },
   { label: "Pedidos pendentes", value: "18", delta: "-3", icon: "Clock" },
   { label: "Novos usuários", value: "1.284", delta: "+11,9%", icon: "Users" },
