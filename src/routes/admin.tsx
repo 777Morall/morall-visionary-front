@@ -7,7 +7,7 @@ import { StatusBadge } from "@/components/StatusBadge";
 import { adminMetrics, adminUsers, adminPayments, adminLogs } from "@/lib/mock";
 
 export const Route = createFileRoute("/admin")({
-  head: () => ({ meta: [{ title: "Admin — Morall Buscas" }] }),
+  head: () => ({ meta: [{ title: "Admin — Morall Store" }] }),
   component: Admin,
 });
 
@@ -28,7 +28,7 @@ function Admin() {
               <thead>
                 <tr className="border-y border-border text-text-dim">
                   <th className="px-6 py-3 font-medium">Usuário</th>
-                  <th className="px-6 py-3 font-medium">Plano</th>
+                  <th className="px-6 py-3 font-medium">Perfil</th>
                   <th className="px-6 py-3 font-medium">Desde</th>
                   <th className="px-6 py-3 font-medium">Status</th>
                 </tr>
