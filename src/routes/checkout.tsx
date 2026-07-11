@@ -124,7 +124,7 @@ function Checkout() {
           </GlassCard>
 
           {/* Payment */}
-          <GlassCard glow className="min-w-0 p-6 sm:p-8">>
+          <GlassCard glow className="min-w-0 p-6 sm:p-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-sm font-medium text-text-strong">
                 <QrCode className="h-4.5 w-4.5 text-glow" /> Pague com Pix
