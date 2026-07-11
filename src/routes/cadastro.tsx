@@ -37,13 +37,13 @@ function CadastroPage() {
         <Logo />
         <div>
           <h2 className="max-w-sm text-4xl font-bold leading-tight text-text-strong">
-            Seu acesso premium começa <span className="text-gradient">aqui</span>.
+            Seu marketplace de gift cards começa <span className="text-gradient">aqui</span>.
           </h2>
           <p className="mt-4 max-w-sm text-text-dim">
-            Crie sua conta, escolha um plano e libere o painel após a confirmação do Pix.
+            Crie sua conta, compre cards com entrega instantânea e venda os seus quando quiser.
           </p>
         </div>
-        <p className="text-xs text-text-dim">© {new Date().getFullYear()} Morall Buscas</p>
+        <p className="text-xs text-text-dim">© {new Date().getFullYear()} Morall Store</p>
       </div>
 
       <div className="flex items-center justify-center p-6 sm:p-10">
