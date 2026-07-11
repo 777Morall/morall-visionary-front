@@ -10,12 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as PlanosRouteImport } from './routes/planos'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as HistoricoRouteImport } from './routes/historico'
 import { Route as DashboardRouteImport } from './routes/dashboard'
-import { Route as ConsultaRouteImport } from './routes/consulta'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CadastroRouteImport } from './routes/cadastro'
 import { Route as AdminRouteImport } from './routes/admin'
@@ -24,11 +22,6 @@ import { Route as IndexRouteImport } from './routes/index'
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PlanosRoute = PlanosRouteImport.update({
-  id: '/planos',
-  path: '/planos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -49,11 +42,6 @@ const HistoricoRoute = HistoricoRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConsultaRoute = ConsultaRouteImport.update({
-  id: '/consulta',
-  path: '/consulta',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -82,12 +70,10 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/cadastro': typeof CadastroRoute
   '/checkout': typeof CheckoutRoute
-  '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/historico': typeof HistoricoRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
-  '/planos': typeof PlanosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
@@ -95,12 +81,10 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/cadastro': typeof CadastroRoute
   '/checkout': typeof CheckoutRoute
-  '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/historico': typeof HistoricoRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
-  '/planos': typeof PlanosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
@@ -109,12 +93,10 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/cadastro': typeof CadastroRoute
   '/checkout': typeof CheckoutRoute
-  '/consulta': typeof ConsultaRoute
   '/dashboard': typeof DashboardRoute
   '/historico': typeof HistoricoRoute
   '/legal': typeof LegalRoute
   '/login': typeof LoginRoute
-  '/planos': typeof PlanosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
@@ -124,12 +106,10 @@ export interface FileRouteTypes {
     | '/admin'
     | '/cadastro'
     | '/checkout'
-    | '/consulta'
     | '/dashboard'
     | '/historico'
     | '/legal'
     | '/login'
-    | '/planos'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -137,12 +117,10 @@ export interface FileRouteTypes {
     | '/admin'
     | '/cadastro'
     | '/checkout'
-    | '/consulta'
     | '/dashboard'
     | '/historico'
     | '/legal'
     | '/login'
-    | '/planos'
     | '/sitemap.xml'
   id:
     | '__root__'
@@ -150,12 +128,10 @@ export interface FileRouteTypes {
     | '/admin'
     | '/cadastro'
     | '/checkout'
-    | '/consulta'
     | '/dashboard'
     | '/historico'
     | '/legal'
     | '/login'
-    | '/planos'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
@@ -164,12 +140,10 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   CadastroRoute: typeof CadastroRoute
   CheckoutRoute: typeof CheckoutRoute
-  ConsultaRoute: typeof ConsultaRoute
   DashboardRoute: typeof DashboardRoute
   HistoricoRoute: typeof HistoricoRoute
   LegalRoute: typeof LegalRoute
   LoginRoute: typeof LoginRoute
-  PlanosRoute: typeof PlanosRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -180,13 +154,6 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/planos': {
-      id: '/planos'
-      path: '/planos'
-      fullPath: '/planos'
-      preLoaderRoute: typeof PlanosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -215,13 +182,6 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/consulta': {
-      id: '/consulta'
-      path: '/consulta'
-      fullPath: '/consulta'
-      preLoaderRoute: typeof ConsultaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -260,24 +220,12 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   CadastroRoute: CadastroRoute,
   CheckoutRoute: CheckoutRoute,
-  ConsultaRoute: ConsultaRoute,
   DashboardRoute: DashboardRoute,
   HistoricoRoute: HistoricoRoute,
   LegalRoute: LegalRoute,
   LoginRoute: LoginRoute,
-  PlanosRoute: PlanosRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
