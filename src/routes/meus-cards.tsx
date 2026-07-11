@@ -33,7 +33,7 @@ function MeusCards() {
       ) : (
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {owned.map((o, i) => {
-            const model = giftCards.find((c) => c.card === undefined ? false : false) ?? giftCards.find((c) => c.name === o.card);
+            const model = giftCards.find((c) => c.name === o.card);
             const Icon =
               (model && (Icons[model.icon as keyof typeof Icons] as LucideIcon)) ?? Icons.CreditCard;
             return (
