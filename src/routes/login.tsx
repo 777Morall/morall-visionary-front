@@ -9,8 +9,8 @@ import { GlowButton } from "@/components/GlowButton";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Entrar — Morall Buscas" },
-      { name: "description", content: "Acesse seu painel privado da Morall Buscas." },
+      { title: "Entrar — Morall Store" },
+      { name: "description", content: "Acesse sua conta na Morall Store, o marketplace de gift cards." },
     ],
   }),
   component: LoginPage,
